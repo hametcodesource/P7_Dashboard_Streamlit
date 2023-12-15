@@ -130,3 +130,4 @@ wcwidth==0.2.12
 websocket-client==1.7.0
 Werkzeug==3.0.1
 zipp==3.17.0
+python==3.10.7
