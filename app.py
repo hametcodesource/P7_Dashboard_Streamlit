@@ -35,7 +35,7 @@ def main():
         client.client(df_total, df_test)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 8501))
     main()
 
 
