@@ -1,1 +1,1 @@
-web: streamlit run app.py -t 600
+web: streamlit run app.py --server.enableCORS false
