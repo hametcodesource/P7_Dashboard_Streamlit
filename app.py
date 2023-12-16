@@ -1,6 +1,8 @@
 import streamlit as st
 import client, home, general
 import pandas as pd
+import os
+
 
 
 
@@ -20,17 +22,21 @@ def load_data():
 df_test,df_total,df_analyse = load_data()
 
 
+def main():
+    st.sidebar.title('Navigation')
+    options = st.sidebar.selectbox('Select a page:',
+                                   ['Home', 'General Information', 'Client Information'])
+
+    if options == 'Home':
+        home.home()
+    elif options == 'General Information':
+        general.general(df_analyse)
+    elif options == 'Client Information':
+        client.client(df_total, df_test)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    main()
 
 
-
-st.sidebar.title('Navigation')
-options = st.sidebar.selectbox('Select a page:',
-                            ['Home', 'General Information', 'Client Information'])
-
-if options == 'Home':
-    home.home()
-elif options == 'General Information':
-    general.general(df_analyse)
-elif options == 'Client Information':
-    client.client(df_total,df_test)
 
