@@ -17,7 +17,6 @@ def client(df_total,df_test):
 
     list_client_id=list(df_total.SK_ID_CURR.unique())
     list_client_id=[str(id) for id in list_client_id]
-    print(list_client_id)
     def update_sk(sk_id):
         predict_proba_1=0.5
         if sk_id in list_client_id:
@@ -101,18 +100,13 @@ def client(df_total,df_test):
         col=list(client_info.columns)
         col.remove("SK_ID_CURR")
         col.remove("index")
-        print("okkkk",client_info)
         client_info=client_info[col]
         if sk_id in list_client_id:
             url_pred = url + "predict/" + sk_id
-            print(url_pred)
             response = requests.get(url_pred)
             if response:
                 shap_values =response.json()['shap_values']
                 val=[shap_values[0][:8]]
-                print("1",type(np.array(shap_values)))
-                print("2",type(np.array(val)))
-                print(shap_values)
             else:
                 print("erreur web : ", response)
         #print(client_info)
